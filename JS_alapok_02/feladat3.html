@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMSZC Petrik - 2/14. SL - Webprog - Javascript alapok - 2. feladatsor / 3. feladat</title>
+</head>
+<body>
+    <p>BMSZC Petrik - 2/14. SL - Webprog - Javascript alapok - 2. feladatsor / 3. feladat</p>
+    <p id="bekezdes"></p>
+    <img src="soralatet.jpg" onload="betoltott()" onclick="kattintott()" width="50%">
+    <script>
+        function betoltott() {
+            document.getElementById("bekezdes").innerText = "Betöltött"
+        }
+
+        function kattintott() {
+            document.getElementById("bekezdes").innerText = "Rákattintott"
+        }
+    </script>
+</body>
+</html>
