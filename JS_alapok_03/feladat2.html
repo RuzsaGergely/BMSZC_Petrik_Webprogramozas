@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMSZC Petrik - 2/14. SL - Webprog - Javascript alapok - 3. feladatsor / 2. feladat</title>
+</head>
+<body>
+    <p>BMSZC Petrik - 2/14. SL - Webprog - Javascript alapok - 3. feladatsor / 2. feladat</p>
+    <label>A oldal:</label>
+    <input type="text" name="side_a" id="a">
+    <label>B oldal:</label>
+    <input type="text" name="side_b" id="b">
+    <label>C oldal:</label>
+    <input type="text" name="side_c" id="c">
+    <input type="button" value="Számol" onclick="szamol()">
+    <h1 id="valasz"></h1>
+    <script>
+        function szamol() {
+            var a = +document.getElementById("a").value;
+            var b = +document.getElementById("b").value;
+            var c = +document.getElementById("c").value;
+
+            var s = (a+b+c) / 2;
+            var t = Math.sqrt(s*(s-a)*(s-b)*(s-c))
+            var l = a+b+c;
+            document.getElementById("valasz").innerText = "Kerület: " + l + ", terület: " + t;
+        }
+    </script>
+</body>
+</html>

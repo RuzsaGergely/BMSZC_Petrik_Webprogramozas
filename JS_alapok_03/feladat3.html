@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMSZC Petrik - 2/14. SL - Webprog - Javascript alapok - 3. feladatsor / 3. feladat</title>
+</head>
+<body>
+    <p>BMSZC Petrik - 2/14. SL - Webprog - Javascript alapok - 3. feladatsor / 3. feladat</p>
+    <input type="button" value="Köszöntés" onclick="koszones()">
+    <script>
+        function koszones() {
+            const d = new Date();
+            let hour = d.getHours();
+            if(hour > 9 && hour < 18) {
+                alert("Jó napot!")
+            } else if(hour < 10 && hour >=5) {
+                alert("Jó reggelt!")
+            } else {
+                alert("Jó estét!")
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMSZC Petrik - 2/14. SL - Webprog - Javascript alapok - 3. feladatsor / 1. feladat</title>
+</head>
+<body>
+    <p>BMSZC Petrik - 2/14. SL - Webprog - Javascript alapok - 3. feladatsor / 1. feladat</p>
+    <input type="number" name="tipp" id="tipp" min="1" max="100">
+    <input type="button" value="Tippelek!" onclick="tippLeadása()">
+    <input type="button" value="Új számot kérek!" onclick="generalas()">
+    <h1 id="valasz"></h1>
+    <script>
+        var gondolat = 0;
+        function generalas() {
+            gondolat = Math.floor(Math.random() * 100) + 1;
+            document.getElementById("valasz").innerText = "";
+        }
+        function tippLeadása() {
+            var mezo = document.getElementById("tipp").value;
+            var valasz = document.getElementById("valasz");
+            if(mezo == gondolat) {
+                valasz.innerText = "Gratulálok! Erre gondoltam!";
+            } else {
+                if(mezo > gondolat) {
+                    valasz.innerText = "Nem nyert! Egy kisebb számra gondoltam!";
+                } else {
+                    valasz.innerText = "Nem nyert! Egy nagyobb számra gondoltam!";
+                }
+            }
+        }
+
+        generalas();
+    </script>
+</body>
+</html>
