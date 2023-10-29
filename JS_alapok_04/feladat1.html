@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMSZC Petrik - 2/14. SL - Webprog - Javascript alapok - 4. feladatsor / 1. feladat</title>
+</head>
+<body>
+    <p>BMSZC Petrik - 2/14. SL - Webprog - Javascript alapok - 4. feladatsor / 1. feladat</p>
+    <input type="text" name="bemenet" id="szoveg">
+    <input type="radio" name="tipus" id="kisbetu" checked><label for="kisbetu">Kisbetűs</label>
+    <input type="radio" name="tipus" id="nagybetu"><label for="nagybetu">Nagybetűs</label>
+    <input type="button" value="Átalakítás" id="gomb">
+    <script>
+        document.getElementById("gomb").addEventListener("click", function() {
+            var s = document.getElementById("szoveg").value;
+            var k = document.getElementById("kisbetu").checked;
+            var n = document.getElementById("nagybetu").checked;
+            
+            if(!k && !n) {
+                alert("Legalább egy opciót válassz ki!")
+                return;
+            }
+
+            if(s.length < 1){
+                alert("Kérlek írj be szöveget!")
+                return;
+            }
+
+            if(k){
+                document.getElementById("szoveg").value = s.toLowerCase();
+            } else {
+                document.getElementById("szoveg").value = s.toUpperCase();
+
+            }
+        })
+    </script>
+</body>
+</html>

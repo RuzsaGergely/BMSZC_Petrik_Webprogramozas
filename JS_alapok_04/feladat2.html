@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMSZC Petrik - 2/14. SL - Webprog - Javascript alapok - 4. feladatsor / 2. feladat</title>
+</head>
+<body>
+    <p>BMSZC Petrik - 2/14. SL - Webprog - Javascript alapok - 4. feladatsor / 2. feladat</p>
+    <label for="username">Felhasználónév</label>
+    <input type="text" name="username" id="username">
+    <br>
+    <label for="password">Jelszó</label>
+    <input type="password" name="password" id="password">
+    <br>
+    <label for="password2">Jelszó mégegyszer</label>
+    <input type="password" name="password2" id="password2">
+    <br>
+    <label for="email">Email</label>
+    <input type="email" name="email" id="email">
+    <br>
+    <label for="dob">Születési dátum</label>
+    <input type="date" name="dob" id="dob">
+    <br>
+    <input type="button" value="Regisztrál" id="gomb">
+    <script>
+        document.getElementById("gomb").addEventListener("click", function() {
+            var u = document.getElementById("username").value;
+            var p = document.getElementById("password").value;
+            var p2 = document.getElementById("password2").value;
+            var e = document.getElementById("email").value;
+            var d = document.getElementById("dob").value;
+
+            var err = []
+
+            if(u.length > 16 || u.length < 5){
+                err.push("[Hiba] A felhasználónévnek 5 és 16 karakter között kell lennie");
+            }
+
+            if(p.length < 5) {
+                err.push("[Hiba] A jelszónak minimum 5 karakternek kell lennie");
+            }
+
+            if(p != p2) {
+                err.push("[Hiba] A jelszavaknak egyezniük kell");
+            }
+
+            // https://stackoverflow.com/questions/12090077/javascript-regular-expression-password-validation-having-special-characters
+            var repass = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{5,}$/;
+            if(!repass.test(p)){
+                err.push("[Hiba] A jelszavaknak tartalmazniuk kell kisbetűt, nagybetűt, számot és speciális karaktert");
+            }
+
+            // https://regexr.com/3e48o
+            var reemail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,5}$/;
+            if(!reemail.test(e)){
+                err.push("[Hiba] Hibás email formátum");
+            }
+
+            if(err.length > 0) {
+                alert(err)
+            } else {
+                var return_object = {
+                    "Username": u,
+                    "Password": p,
+                    "Email": e,
+                    "DateOfBirth": d
+                }
+
+                console.log(return_object)
+                alert("Siker!")
+            }
+
+            
+
+        })
+    </script>
+</body>
+</html>
