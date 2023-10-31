@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMSZC Petrik - 2/14. SL - Webprog - Javascript alapok - Osztályok / 1. feladat</title>
+</head>
+<body>
+    <p>BMSZC Petrik - 2/14. SL - Webprog - Javascript alapok - Osztályok / 1. feladat</p>
+    <p id="teljesnev"></p>
+    <p id="eletkor"></p>
+    <p id="hobby"></p>
+    <script>
+        class szemely {
+
+            constructor (veznev, kernev, kor, hobbi) {
+                this.veznev = veznev;
+                this.kernev = kernev;
+                this.kor = kor;
+                this.hobbi = hobbi;
+            }
+
+            setHobby(hobbi) {
+                this.hobbi = hobbi;
+            }
+
+            teljesnev() {
+                return this.veznev + " " + this.kernev
+            }
+
+            eletkor() {
+                return this.kor;
+            }
+
+            getHobby() {
+                return this.hobbi;
+            }
+        }
+
+        let kisskati = new szemely("Kiss","Katalin",28,"");
+        kisskati.setHobby("futás");
+        document.getElementById("teljesnev").innerHTML = "Teljes neve: " + kisskati.teljesnev();
+        document.getElementById("eletkor").innerHTML ="Életkora: " + kisskati.eletkor();
+        document.getElementById("hobby").innerHTML = "Kedvenc elfoglaltsága: " + kisskati.getHobby();
+    </script>
+</body>
+</html>

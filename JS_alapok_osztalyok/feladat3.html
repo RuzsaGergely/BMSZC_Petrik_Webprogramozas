@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMSZC Petrik - 2/14. SL - Webprog - Javascript alapok - Osztályok / 3. feladat</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+</head>
+
+<body class="bg-warning-subtle">
+    <div class="card w-75 mx-auto mt-3">
+        <div class="card-body">
+            <p class="text-center fw-bold">BMSZC Petrik - 2/14. SL - Webprog - Javascript alapok - Osztályok / 3.
+                feladat</p>
+
+            <div class="card">
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label class="form-label">Étel neve</label>
+                        <input type="text" class="form-control" id="nameOfFood">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Étel ára</label>
+                        <input type="number" class="form-control" id="priceOfFood">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Étel kategóriája</label>
+                        <select class="form-select" id="categoryOfFood">
+                            <option value="leves" selected>Leves</option>
+                            <option value="fozelek">Főzelék</option>
+                            <option value="pizza">Pizza</option>
+                            <option value="teszta">Tésztás étel</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Összetevők</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="paradicsom" name="ingredient">
+                            <label class="form-check-label">
+                                Paradicsom
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="tojas" name="ingredient">
+                            <label class="form-check-label">
+                                Tojás
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="liszt" name="ingredient">
+                            <label class="form-check-label">
+                                Liszt
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="so" name="ingredient">
+                            <label class="form-check-label">
+                                Só
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="zoldborso" name="ingredient">
+                            <label class="form-check-label">
+                                Zöldborsó
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="hus" name="ingredient">
+                            <label class="form-check-label">
+                                Hús
+                            </label>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-success" onclick="etelHozzaad()">Mentés</button>
+                </div>
+            </div>
+
+            <div id="kimenet" class="mt-5">
+
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+        crossorigin="anonymous"></script>
+    <script>
+        class Etel {
+            constructor(nev, ar, kategoria, osszetevok) {
+                this.nev = nev
+                this.ar = ar,
+                this.kategoria = kategoria,
+                this.osszetevok = osszetevok
+            }
+        }
+
+        var etelek = [];
+
+        function etelHozzaad() {
+            var etelNeve = document.getElementById("nameOfFood").value;
+            var etelAra = document.getElementById("priceOfFood").value;
+            var etelKategoriaja = document.getElementById("categoryOfFood").value;
+            var etelOsszetevoi = [];
+
+            var osszetevok = document.getElementsByName("ingredient");
+            for (i = 0; i < osszetevok.length; i++) {
+                if (osszetevok[i].checked)
+                    etelOsszetevoi.push(osszetevok[i].value);
+            }
+            etelek.push(new Etel(etelNeve, etelAra, etelKategoriaja, etelOsszetevoi))
+            console.log(etelek)
+            tablazatKirajzol()
+        }
+
+        function tablazatKirajzol() {
+            var kimenet = document.getElementById("kimenet");
+
+            var html_out = "";
+
+            var grouped = Object.groupBy(etelek, ({kategoria}) => kategoria)
+            var keys_of_groupped = Object.keys(grouped);
+            var html_out = "";
+            for (let index = 0; index < keys_of_groupped.length; index++) {
+                const name = keys_of_groupped[index];
+                
+                html_out += "<h2 class='text-center'>Kategória: " + name + "</h2>"
+                html_out += "<table class=\"table\"><thead><tr><th>Név</th><th>Ár</th><th>Kategória</th><th>Összetevők</th></tr></thead><tbody>"
+                grouped[name].forEach(element => {
+                    html_out += "<tr>"
+                    html_out +="<td>" + element.nev + "</td>"
+                    html_out +="<td>" + element.ar + "</td>"
+                    html_out +="<td>" + element.kategoria + "</td>"
+                    html_out +="<td><ul>"
+                        element.osszetevok.forEach(ingredient => {
+                            html_out +="<li>" + ingredient + "</li>"
+                        })
+                    html_out +="</ul></td>"
+                    html_out += "</tr>"
+                });
+                html_out += "</tbody></table>"
+            }
+            kimenet.innerHTML = html_out;
+        }
+    </script>
+</body>
+
+</html>
