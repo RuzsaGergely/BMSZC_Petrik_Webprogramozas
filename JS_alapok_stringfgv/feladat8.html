@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMSZC Petrik - 2/14. SL - Webprog - Javascript alapok - String-függvények / 8. feladat</title>
+</head>
+<body>
+    <p>BMSZC Petrik - 2/14. SL - Webprog - Javascript alapok - String-függvények / 8. feladat</p>
+    <input type="text" id="bemenet">
+    <button type="button" onclick="titkos()">titkos</button>
+    <script>
+        function titkos() {
+            var bemenet = document.getElementById("bemenet").value;
+            let kimenet = "";
+            for (var i = 0; i < bemenet.length; i++) {
+                kimenet += bemenet.charCodeAt(i) + ", "
+            }
+            alert(kimenet)
+        }
+    </script>
+</body>
+</html>

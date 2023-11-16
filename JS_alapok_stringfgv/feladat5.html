@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMSZC Petrik - 2/14. SL - Webprog - Javascript alapok - String-függvények / 5. feladat</title>
+</head>
+<body>
+    <p>BMSZC Petrik - 2/14. SL - Webprog - Javascript alapok - String-függvények / 5. feladat</p>
+    <input type="text" id="bemenet">
+    <button type="button" onclick="fordit()">fordit</button>
+    <script>
+        function fordit() {
+            alert(document.getElementById("bemenet").value.split("").reverse().join(""))
+        }
+    </script>
+</body>
+</html>

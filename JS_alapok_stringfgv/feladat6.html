@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMSZC Petrik - 2/14. SL - Webprog - Javascript alapok - String-függvények / 6. feladat</title>
+</head>
+<body>
+    <p>BMSZC Petrik - 2/14. SL - Webprog - Javascript alapok - String-függvények / 6. feladat</p>
+    <input type="text" id="haystack">
+    <input type="text" id="needle">
+    <button type="button" onclick="keres()">keres</button>
+    <script>
+        function keres() {
+            let haystack = document.getElementById("haystack").value
+            let needle = document.getElementById("needle").value
+            if(haystack.length < 30) {
+                alert("Legalább 30 karaktert bitte!")
+                return
+            }
+            
+            if(haystack.includes(needle)){
+                alert("Benne van a szó a szövegben")
+            } else {
+                alert("Nincs benne a szó a szövegben")
+            }
+        }
+    </script>
+</body>
+</html>
